@@ -71,6 +71,12 @@ const app = Vue.createApp({
       }
       this.attackPlayer();
     },
+    newGame() {
+      this.playerHealth = 100;
+      this.monsterHealt = 100;
+      this.winner = null;
+      this.currentRound = 0;
+    },
   },
 });
 
