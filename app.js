@@ -8,7 +8,24 @@ const app = Vue.createApp({
       playerHealth: 100,
       monsterHealt: 100,
       currentRound: 0,
+      winner: null,
     };
+  },
+  watch: {
+    playerHealth(value) {
+      if (value <= 0 && this.monsterHealt <= 0) {
+        this.winner = "draw";
+      } else if (value <= 0) {
+        this.winner = "monster";
+      }
+    },
+    monsterHealt(value) {
+      if (value <= 0 && this.playerHealth <= 0) {
+        this.winner = "draw";
+      } else if (value <= 0) {
+        this.winner = "player";
+      }
+    },
   },
   computed: {
     monsterBarStyles() {
